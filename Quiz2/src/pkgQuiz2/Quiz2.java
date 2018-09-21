@@ -14,22 +14,20 @@ public class Quiz2 {
 	}
 	
 	public double monthlyPayment() {
-	double Principle=CarCost-DownPayment;
+	double Principal=CarCost-DownPayment;
 	double MonthlyRate=InterestRate/12.0;
-	double numerator = (((Math.pow(1+MonthlyRate, LoanLength))*MonthlyRate)*Principle);
-	System.out.println(numerator);
-	double denominator = (Math.pow(1+MonthlyRate, LoanLength))-1;
-	System.out.println(denominator);
-	double monthlyPay=numerator/denominator;
-	System.out.println(monthlyPay);
+	double monthlyPay=(MonthlyRate*Principal)/(1-Math.pow(1+MonthlyRate,-1*LoanLength));
 	monthlyPay=Math.round(monthlyPay*100.0)/100.0;
-	System.out.println(monthlyPay);
 	return monthlyPay;
 	}
 	
 	public double totalInterest() {
-		double Principle=CarCost-DownPayment;
-		double totalInt = monthlyPayment()-Principle;
+		double Principal=CarCost-DownPayment;
+		double MonthlyRate=InterestRate/12.0;
+		double payPerMonth = (MonthlyRate*Principal)/(1-Math.pow(1+MonthlyRate,-1*LoanLength));
+		double totalInt= (payPerMonth*LoanLength)-Principal;
+		totalInt=Math.round(totalInt*100.0)/100.0;
+		System.out.println(totalInt);
 		return totalInt;
 	}
 }
