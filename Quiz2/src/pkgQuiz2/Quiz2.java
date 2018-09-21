@@ -27,7 +27,6 @@ public class Quiz2 {
 		double payPerMonth = (MonthlyRate*Principal)/(1-Math.pow(1+MonthlyRate,-1*LoanLength));
 		double totalInt= (payPerMonth*LoanLength)-Principal;
 		totalInt=Math.round(totalInt*100.0)/100.0;
-		System.out.println(totalInt);
 		return totalInt;
 	}
 }
